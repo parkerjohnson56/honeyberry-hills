@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- basic meta stuff -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Honeyberry Hill | Pick Your Own Strawberries</title>
+    
+    <!-- style files -->
+    <link rel="stylesheet" href="styles.css">
+    <!-- jquery ui for the accordion -->
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
+    <!-- slick carousel for the slideshow -->
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css"/>
+    <!-- icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&family=Comfortaa:wght@400;700&family=Luckiest+Guy&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- header with nav and weather -->
+    <header>
+        <nav>
+            <a href="#home" class="logo">
+                <span class="logo-emoji">🍓</span>
+            </a>
+            <!-- weather widget -->
+            <div class="weather-widget">
+                <div id="weather" class="weather-display">
+                    <i class="fas fa-sun"></i>
+                    <span>loading weather...</span>
+                </div>
+            </div>
+            <!-- mobile menu button -->
+            <button class="mobile-menu-btn" aria-label="toggle navigation menu">
+                <i class="fas fa-bars"></i>
+            </button>
+            <!-- nav links -->
+            <ul class="nav-links">
+                <li><a href="#home"><i class="fas fa-home"></i> home</a></li>
+                <li><a href="#about"><i class="fas fa-heart"></i> about</a></li>
+                <li><a href="#booking"><i class="fas fa-calendar-alt"></i> book now</a></li>
+                <li><a href="#varieties"><i class="fas fa-seedling"></i> varieties</a></li>
+                <li><a href="#gallery"><i class="fas fa-images"></i> gallery</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <!-- hero section with animated elements -->
+        <section id="home" class="hero">
+            <div class="hero-content">
+                <h1>Welcome to Honeyberry Hill</h1>
+                <p>Experience the sweetest strawberry picking adventure in Los Angeles</p>
+                <a href="#booking" class="cta-button"><i class="fas fa-strawberry"></i> Book Your Visit</a>
+            </div>
+            <!-- floating decorative elements -->
+            <div class="floating-elements">
+                <div class="floating-strawberry">🍓</div>
+                <div class="floating-heart">❤️</div>
+                <div class="floating-star">⭐</div>
+                <div class="floating-cloud">☁️</div>
+            </div>
+        </section>
+
+        <!-- about section with features -->
+        <section id="about" class="about">
+            <h2>Our Story</h2>
+            <div class="about-content">
+                <p>Nestled in the heart of Los Angeles, Honeyberry Hill brings the countryside to the city. We grow the sweetest, juiciest strawberries using sustainable farming practices.</p>
+                <div class="about-features">
+                    <div class="feature">
+                        <i class="fas fa-leaf"></i>
+                        <h3>Sustainable</h3>
+                        <p>We use eco-friendly farming methods</p>
+                    </div>
+                    <div class="feature">
+                        <i class="fas fa-heart"></i>
+                        <h3>Family-Owned</h3>
+                        <p>Passionate about bringing joy through berries</p>
+                    </div>
+                    <div class="feature">
+                        <i class="fas fa-sun"></i>
+                        <h3>LA Fresh</h3>
+                        <p>Picked fresh daily for maximum flavor</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- booking form with web storage -->
+        <section id="booking" class="booking">
+            <h2>Book Your Visit</h2>
+            <div class="booking-form">
+                <form id="visitForm">
+                    <div class="form-group">
+                        <label for="name"><i class="fas fa-user"></i> Name:</label>
+                        <input type="text" id="name" required placeholder="Your name">
+                    </div>
+                    <div class="form-group">
+                        <label for="email"><i class="fas fa-envelope"></i> Email:</label>
+                        <input type="email" id="email" required placeholder="your@email.com">
+                    </div>
+                    <div class="form-group">
+                        <label for="date"><i class="fas fa-calendar"></i> Preferred Date:</label>
+                        <input type="date" id="date" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="time"><i class="fas fa-clock"></i> Preferred Time:</label>
+                        <select id="time" required>
+                            <option value="">Select a time</option>
+                            <option value="morning">Morning (9AM - 12PM)</option>
+                            <option value="afternoon">Afternoon (1PM - 4PM)</option>
+                        </select>
+                    </div>
+                    <button type="submit"><i class="fas fa-check-circle"></i> Book Now</button>
+                </form>
+            </div>
+        </section>
+
+        <!-- strawberry varieties loaded via AJAX -->
+        <section id="varieties" class="varieties">
+            <h2>Our Strawberry Varieties</h2>
+            <div id="strawberryList" class="strawberry-grid">
+                <!-- strawberry varieties will be loaded here -->
+            </div>
+        </section>
+
+        <!-- image gallery with Slick Carousel -->
+        <section id="gallery" class="gallery">
+            <h2>Farm Gallery</h2>
+            <div class="slideshow">
+                <div class="slide">
+                    <img src="images/farm1.jpg" alt="Strawberry field at sunrise">
+                    <div class="slide-caption">Our beautiful strawberry fields at sunrise</div>
+                </div>
+                <div class="slide">
+                    <img src="images/farm2.jpg" alt="Fresh picked strawberries in baskets">
+                    <div class="slide-caption">Fresh picked strawberries ready for our visitors</div>
+                </div>
+                <div class="slide">
+                    <img src="images/farm3.jpg" alt="Children picking strawberries">
+                    <div class="slide-caption">Family fun at our U-pick fields</div>
+                </div>
+                <div class="slide">
+                    <img src="images/farm4.jpg" alt="Organic farming practices">
+                    <div class="slide-caption">Our sustainable farming methods in action</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- FAQ section with jQuery UI Accordion -->
+        <section id="faq" class="faq">
+            <h2>Frequently Asked Questions</h2>
+            <div id="accordion">
+                <h3><i class="fas fa-question-circle"></i> What should I bring?</h3>
+                <div>
+                    <p>Comfortable shoes, sunscreen, and a reusable water bottle. We provide containers for picking.</p>
+                </div>
+                <h3><i class="fas fa-question-circle"></i> How long does picking take?</h3>
+                <div>
+                    <p>Most visitors spend 1-2 hours picking strawberries and exploring the farm.</p>
+                </div>
+                <h3><i class="fas fa-question-circle"></i> What are your prices?</h3>
+                <div>
+                    <p>Strawberries are sold by weight. Current pricing is $5 per pound.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- footer with contact information and social links -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Contact Us</h3>
+                <p><i class="fas fa-map-marker-alt"></i> 123 Strawberry Lane</p>
+                <p>Los Angeles, CA 90001</p>
+                <p><i class="fas fa-phone"></i> (555) 123-4567</p>
+                <p><i class="fas fa-envelope"></i> info@honeyberryhill.com</p>
+            </div>
+            <div class="footer-section">
+                <h3>Hours</h3>
+                <p><i class="fas fa-clock"></i> Monday - Friday: 9AM - 5PM</p>
+                <p><i class="fas fa-clock"></i> Saturday - Sunday: 8AM - 6PM</p>
+                <div class="social-icons">
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-tiktok"></i></a>
+                    <a href="#"><i class="fab fa-pinterest"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 Honeyberry Hill. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- scripts loaded with defer attribute -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    <script src="script.js" defer></script>
+</body>
+</html> 

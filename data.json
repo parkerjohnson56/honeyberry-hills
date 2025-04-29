@@ -1,0 +1,41 @@
+
+{
+    "varieties": [
+        {
+            "name": "Pearl Drop",
+            "description": "A rare white strawberry variety with a pearly sheen and delicate floral notes. Known for its exceptional sweetness and subtle vanilla undertones.",
+            "image": "images/pearl.jpg",
+            "season": "Early to Mid Spring",
+            "characteristics": [
+                "Pure white flesh",
+                "Light pink blush",
+                "Vanilla-honey flavor",
+                "Extra sweet aroma"
+            ]
+        },
+        {
+            "name": "Aurora Gem",
+            "description": "A unique bi-colored strawberry that transitions from rose pink to ruby red as it ripens. Prized for its complex flavor profile.",
+            "image": "images/aurora.jpg",
+            "season": "Mid Spring to Early Summer",
+            "characteristics": [
+                "Color-changing ripening",
+                "Heart-shaped berries",
+                "Berry-floral flavor",
+                "Firm, juicy texture"
+            ]
+        },
+        {
+            "name": "Twilight Blush",
+            "description": "A deep purple-red variety with a natural silvery sheen on its leaves. Produces intensely aromatic berries with notes of wild berries.",
+            "image": "images/twilight.jpg",
+            "season": "Late Spring to Summer",
+            "characteristics": [
+                "Deep burgundy color",
+                "Silver-tinted leaves",
+                "Rich berry flavor",
+                "Strong fragrance"
+            ]
+        }
+    ]
+} 
