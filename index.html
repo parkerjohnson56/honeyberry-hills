@@ -21,7 +21,7 @@
 <body>
     <!-- header with nav and weather -->
     <header>
-        <nav>
+        <nav> 
             <a href="#home" class="logo">
                 <span class="logo-emoji">🍓</span>
             </a>
@@ -68,22 +68,25 @@
         <section id="about" class="about">
             <h2>Our Story</h2>
             <div class="about-content">
-                <p>Nestled in the heart of Los Angeles, Honeyberry Hill brings the countryside to the city. We grow the sweetest, juiciest strawberries using sustainable farming practices.</p>
+                <div class="story-text">
+                    <p>Founded in 1985 by the Rodriguez family, Honeyberry Hill has grown from a small 2-acre dream into Los Angeles' most beloved strawberry farm. Today, our 50-acre farm continues to be family-operated, with three generations working together to bring you the sweetest, most flavorful strawberries in Southern California.</p>
+                    <p>Every berry carries the love, care, and dedication of our family. We believe the best strawberries come from happy plants, nurtured soil, and farmers who truly care about what they grow.</p>
+                </div>
                 <div class="about-features">
                     <div class="feature">
                         <i class="fas fa-leaf"></i>
-                        <h3>Sustainable</h3>
-                        <p>We use eco-friendly farming methods</p>
+                        <h3>Eco-Conscious</h3>
+                        <p>100% organic farming with zero pesticides, using natural compost and beneficial insects to protect our crops</p>
                     </div>
                     <div class="feature">
                         <i class="fas fa-heart"></i>
-                        <h3>Family-Owned</h3>
-                        <p>Passionate about bringing joy through berries</p>
+                        <h3>Family Legacy</h3>
+                        <p>Three generations of strawberry expertise, from grandparents who started the farm to grandchildren who help pick today</p>
                     </div>
                     <div class="feature">
                         <i class="fas fa-sun"></i>
-                        <h3>LA Fresh</h3>
-                        <p>Picked fresh daily for maximum flavor</p>
+                        <h3>Farm Fresh</h3>
+                        <p>Hand-picked daily at peak ripeness, ensuring every strawberry reaches you at the perfect moment of sweetness</p>
                     </div>
                 </div>
             </div>
@@ -92,30 +95,51 @@
         <!-- booking form with web storage -->
         <section id="booking" class="booking">
             <h2>Book Your Visit</h2>
-            <div class="booking-form">
-                <form id="visitForm">
-                    <div class="form-group">
-                        <label for="name"><i class="fas fa-user"></i> Name:</label>
-                        <input type="text" id="name" required placeholder="Your name">
+            <div class="booking-container">
+                <div class="booking-form">
+                    <form id="visitForm">
+                        <div class="form-group">
+                            <label for="name"><i class="fas fa-user"></i> Name:</label>
+                            <input type="text" id="name" required placeholder="Your name">
+                        </div>
+                        <div class="form-group">
+                            <label for="email"><i class="fas fa-envelope"></i> Email:</label>
+                            <input type="email" id="email" required placeholder="your@email.com">
+                        </div>
+                        <div class="form-group">
+                            <label for="date"><i class="fas fa-calendar"></i> Preferred Date:</label>
+                            <input type="date" id="date" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="time"><i class="fas fa-clock"></i> Preferred Time:</label>
+                            <select id="time" required>
+                                <option value="">Select a time</option>
+                                <option value="morning">Morning (9AM - 12PM)</option>
+                                <option value="afternoon">Afternoon (1PM - 4PM)</option>
+                            </select>
+                        </div>
+                        <button type="submit"><i class="fas fa-check-circle"></i> Book Now</button>
+                    </form>
+                </div>
+                <div class="booking-info">
+                    <div class="info-card">
+                        <h3><i class="fas fa-clock"></i> Farm Hours</h3>
+                        <p><strong>Monday - Friday:</strong> 9AM - 5PM</p>
+                        <p><strong>Saturday - Sunday:</strong> 8AM - 6PM</p>
                     </div>
-                    <div class="form-group">
-                        <label for="email"><i class="fas fa-envelope"></i> Email:</label>
-                        <input type="email" id="email" required placeholder="your@email.com">
+                    <div class="info-card">
+                        <h3><i class="fas fa-dollar-sign"></i> Pricing</h3>
+                        <p><strong>Strawberries:</strong> $5 per pound</p>
+                        <p><strong>Entry Fee:</strong> Free for all ages</p>
                     </div>
-                    <div class="form-group">
-                        <label for="date"><i class="fas fa-calendar"></i> Preferred Date:</label>
-                        <input type="date" id="date" required>
+                    <div class="info-card">
+                        <h3><i class="fas fa-info-circle"></i> What to Bring</h3>
+                        <p>• Comfortable shoes</p>
+                        <p>• Sunscreen & hat</p>
+                        <p>• Water bottle</p>
+                        <p>• Camera for memories!</p>
                     </div>
-                    <div class="form-group">
-                        <label for="time"><i class="fas fa-clock"></i> Preferred Time:</label>
-                        <select id="time" required>
-                            <option value="">Select a time</option>
-                            <option value="morning">Morning (9AM - 12PM)</option>
-                            <option value="afternoon">Afternoon (1PM - 4PM)</option>
-                        </select>
-                    </div>
-                    <button type="submit"><i class="fas fa-check-circle"></i> Book Now</button>
-                </form>
+                </div>
             </div>
         </section>
 

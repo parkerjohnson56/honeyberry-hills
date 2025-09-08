@@ -142,54 +142,108 @@ if (bookingForm) {
     });
 }
 
-// Load strawberry varieties using AJAX
+// load strawberry varieties using AJAX
 function loadStrawberryVarieties() {
     const strawberryList = document.getElementById('strawberryList');
     if (strawberryList) {
-        // Show loading state
+        // show loading state
         strawberryList.innerHTML = '<div class="loading">Loading strawberry varieties...</div>';
         
-        // Fetch data from JSON file
+        // fetch data from JSON file
         fetch('data.json')
             .then(response => {
+                console.log('Response status:', response.status);
                 if (!response.ok) {
-                    throw new Error('Network response was not ok');
+                    throw new Error(`Network response was not ok: ${response.status}`);
                 }
                 return response.json();
             })
             .then(data => {
+                console.log('Data loaded successfully:', data);
                 strawberryList.innerHTML = '';
                 
-                // Create cards for each variety
+                // create cards for each variety
                 data.varieties.forEach(strawberry => {
                     const strawberryCard = document.createElement('div');
                     strawberryCard.className = 'strawberry-card';
                     strawberryCard.innerHTML = `
                         <img src="${strawberry.image}" alt="${strawberry.name}">
-                        <h3>${strawberry.name}</h3>
-                        <p>${strawberry.description}</p>
-                        <div class="strawberry-details">
-                            <p><strong>Season:</strong> ${strawberry.season}</p>
-                            <ul class="characteristics">
-                                ${strawberry.characteristics.map(char => `<li>${char}</li>`).join('')}
-                            </ul>
+                        <div class="strawberry-card-content">
+                            <h3>${strawberry.name}</h3>
+                            <p>${strawberry.description}</p>
+                            <div class="strawberry-details">
+                                <p><strong>Season:</strong> ${strawberry.season}</p>
+                                <ul class="characteristics">
+                                    ${strawberry.characteristics.map(char => `<li>${char}</li>`).join('')}
+                                </ul>
+                            </div>
                         </div>
                     `;
                     strawberryList.appendChild(strawberryCard);
                 });
             })
             .catch(error => {
-                // Handle errors
+                // handle errors
                 console.error('Error loading strawberry varieties:', error);
-                strawberryList.innerHTML = '<div class="error">Sorry, we couldn\'t load the strawberry varieties. Please try again later.</div>';
+                // fallback: show hardcoded varieties if fetch fails
+                strawberryList.innerHTML = `
+                    <div class="strawberry-card">
+                        <img src="images/pearl.jpg" alt="Pearl Drop">
+                        <div class="strawberry-card-content">
+                            <h3>Pearl Drop</h3>
+                            <p>A rare white strawberry variety with a pearly sheen and delicate floral notes. Known for its exceptional sweetness and subtle vanilla undertones.</p>
+                            <div class="strawberry-details">
+                                <p><strong>Season:</strong> Early to Mid Spring</p>
+                                <ul class="characteristics">
+                                    <li>Pure white flesh</li>
+                                    <li>Light pink blush</li>
+                                    <li>Vanilla-honey flavor</li>
+                                    <li>Extra sweet aroma</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="strawberry-card">
+                        <img src="images/aurora.jpg" alt="Aurora Gem">
+                        <div class="strawberry-card-content">
+                            <h3>Aurora Gem</h3>
+                            <p>A unique bi-colored strawberry that transitions from rose pink to ruby red as it ripens. Prized for its complex flavor profile.</p>
+                            <div class="strawberry-details">
+                                <p><strong>Season:</strong> Mid Spring to Early Summer</p>
+                                <ul class="characteristics">
+                                    <li>Color-changing ripening</li>
+                                    <li>Heart-shaped berries</li>
+                                    <li>Berry-floral flavor</li>
+                                    <li>Firm, juicy texture</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="strawberry-card">
+                        <img src="images/twilight.jpg" alt="Twilight Blush">
+                        <div class="strawberry-card-content">
+                            <h3>Twilight Blush</h3>
+                            <p>A deep purple-red variety with a natural silvery sheen on its leaves. Produces intensely aromatic berries with notes of wild berries.</p>
+                            <div class="strawberry-details">
+                                <p><strong>Season:</strong> Late Spring to Summer</p>
+                                <ul class="characteristics">
+                                    <li>Deep burgundy color</li>
+                                    <li>Silver-tinted leaves</li>
+                                    <li>Rich berry flavor</li>
+                                    <li>Strong fragrance</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                `;
             });
     }
 }
 
-// Initialize strawberry varieties on page load
+// initialize strawberry varieties on page load
 document.addEventListener('DOMContentLoaded', loadStrawberryVarieties);
 
-// Implement smooth scrolling for navigation
+// implement smooth scrolling for navigation
 document.querySelectorAll('nav a').forEach(anchor => {
     anchor.addEventListener('click', function(e) {
         e.preventDefault();
@@ -203,13 +257,13 @@ document.querySelectorAll('nav a').forEach(anchor => {
     });
 });
 
-// Add scroll animations for elements
+// add scroll animations for elements
 document.addEventListener('DOMContentLoaded', function() {
     const animateOnScroll = function() {
         const elements = document.querySelectorAll('.feature, .strawberry-card, .slide');
         
         elements.forEach(element => {
-            // Check if element is in viewport
+            // check if element is in viewport
             const elementPosition = element.getBoundingClientRect().top;
             const windowHeight = window.innerHeight;
             
@@ -219,19 +273,19 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     };
     
-    // Run on scroll and initial load
+    // run on scroll and initial load
     window.addEventListener('scroll', animateOnScroll);
     animateOnScroll();
 });
 
-// Weather API integration
+// weather API integration
 async function getWeather() {
     const weatherDisplay = document.getElementById('weather');
     const WEATHER_API_KEY = '006def2b5798a192ea8bca31d612048a'; // Replace with actual API key
     const city = 'Los Angeles';
     
     try {
-        // Fetch weather data
+        // fetch weather data
         const response = await fetch(
             `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=imperial&appid=${WEATHER_API_KEY}`
         );
@@ -244,7 +298,7 @@ async function getWeather() {
         const temp = Math.round(data.main.temp);
         const description = data.weather[0].main;
         
-        // Select appropriate weather icon
+        // select appropriate weather icon
         let weatherIcon = 'fa-sun';
         switch (description.toLowerCase()) {
             case 'clouds': weatherIcon = 'fa-cloud'; break;
@@ -255,13 +309,13 @@ async function getWeather() {
             case 'fog': weatherIcon = 'fa-smog'; break;
         }
         
-        // Update weather display
+        // update weather display
         weatherDisplay.innerHTML = `
             <i class="fas ${weatherIcon}"></i>
             <span>Los Angeles: ${temp}°F | ${description}</span>
         `;
     } catch (error) {
-        // Handle errors
+        // handle errors
         console.error('Error fetching weather:', error);
         weatherDisplay.innerHTML = `
             <i class="fas fa-sun"></i>
@@ -270,30 +324,30 @@ async function getWeather() {
     }
 }
 
-// Initialize page features
+// initialize page features
 document.addEventListener('DOMContentLoaded', function() {
     getWeather();
-    // Update weather every 30 minutes
+    // update weather every 30 minutes
     setInterval(getWeather, 1800000);
     
     loadStrawberryVarieties();
     animateOnScroll();
 });
 
-// Mobile Menu Functionality
+// mobile menu functionality
 const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
 const navLinks = document.querySelector('.nav-links');
 
 if (mobileMenuBtn) {
     mobileMenuBtn.addEventListener('click', () => {
         navLinks.classList.toggle('active');
-        // Change menu icon
+        // change menu icon
         const menuIcon = mobileMenuBtn.querySelector('i');
         menuIcon.classList.toggle('fa-bars');
         menuIcon.classList.toggle('fa-times');
     });
 
-    // Close menu when clicking a link
+    // close menu when clicking a link
     document.querySelectorAll('.nav-links a').forEach(link => {
         link.addEventListener('click', () => {
             navLinks.classList.remove('active');
@@ -303,7 +357,7 @@ if (mobileMenuBtn) {
         });
     });
 
-    // Close menu when clicking outside
+    // close menu when clicking outside
     document.addEventListener('click', (e) => {
         if (!navLinks.contains(e.target) && !mobileMenuBtn.contains(e.target) && navLinks.classList.contains('active')) {
             navLinks.classList.remove('active');

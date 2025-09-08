@@ -1,5 +1,6 @@
 All pictures are from Unsplash.com!!
 
+if you are going to open html file locally on laptop to view site you may need to get the vscode plugin called live server and open it as a live server so my json objects load properly (you probably already knew this)
 
 The instructions are below this:
 
