@@ -257,6 +257,56 @@ document.querySelectorAll('nav a').forEach(anchor => {
     });
 });
 
+// Modal functionality - wrapped in DOMContentLoaded
+document.addEventListener('DOMContentLoaded', function() {
+    const modal = document.getElementById('bookingModal');
+    const openModalBtn = document.getElementById('openBookingModal');
+    const closeModalBtn = document.querySelector('.close-modal');
+
+    console.log('Modal elements:', { modal, openModalBtn, closeModalBtn });
+
+    // Open modal
+    if (openModalBtn) {
+        openModalBtn.addEventListener('click', function(e) {
+            e.preventDefault();
+            console.log('Opening modal...');
+            modal.classList.add('show');
+            document.body.style.overflow = 'hidden'; // Prevent background scrolling
+        });
+    } else {
+        console.error('Open modal button not found!');
+    }
+
+    // Close modal
+    if (closeModalBtn) {
+        closeModalBtn.addEventListener('click', function() {
+            console.log('Closing modal...');
+            modal.classList.remove('show');
+            document.body.style.overflow = 'auto'; // Restore scrolling
+        });
+    }
+
+    // Close modal when clicking outside
+    if (modal) {
+        modal.addEventListener('click', function(e) {
+            if (e.target === modal) {
+                console.log('Closing modal by clicking outside...');
+                modal.classList.remove('show');
+                document.body.style.overflow = 'auto';
+            }
+        });
+    }
+
+    // Close modal with Escape key
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && modal && modal.classList.contains('show')) {
+            console.log('Closing modal with Escape key...');
+            modal.classList.remove('show');
+            document.body.style.overflow = 'auto';
+        }
+    });
+});
+
 // add scroll animations for elements
 document.addEventListener('DOMContentLoaded', function() {
     const animateOnScroll = function() {
